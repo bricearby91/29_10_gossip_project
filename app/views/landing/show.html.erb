@@ -1,0 +1,19 @@
+<h1>Bienvenue sur la page d'accueil de The Gossip Project !</h1>
+<br>
+<h3>Liste des potins en magasin :</h3>
+<%= Gossip.all.each_with_index do |gossip,index| %>
+<br>
+
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">Potin numéro <%=index+1%></h5>
+<p class = "card-text">		Le potin numéro <%=index+1%> s'intitule <%=gossip.title %> et nous a été gentiment rapporté par <a href=http://localhost:3000/user/<%=gossip.user.first_name%>><%=gossip.user.first_name%></a>.
+</p>
+
+  </div>
+</div>
+
+
+<br>
+<% end %>
+
