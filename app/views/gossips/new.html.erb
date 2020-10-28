@@ -1,0 +1,14 @@
+<h1>Page de création d'un nouveau potin</h1>
+<br>
+<br>
+<br>
+<h5>Veuillez remplir les champs ci-dessous et cliquer sur "Valider" :</h5>
+
+<br>
+<%= form_tag(gossips_path, method: "post") do %>
+  <%= label_tag(:title, "Titre du potin :") %>
+  <%= text_field_tag(:title) %>
+  <%= label_tag(:content, "Contenu du potin :") %>
+  <%= text_field_tag(:content) %>
+  <%= submit_tag("Valider") %>
+<% end %>
