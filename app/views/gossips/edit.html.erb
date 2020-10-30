@@ -1,2 +1,14 @@
-<h1>Gossip#edit</h1>
-<p>Find me in app/views/gossip/edit.html.erb</p>
+<h1>Page de modification d'un potin déjà existant</h1>
+<br>
+<br>
+<br>
+<h5>Veuillez indiquer les nouveaux champs et cliquer sur "Valider" :</h5>
+
+<br>
+<%= form_tag(gossip_path, method: "put") do %>
+  <%= label_tag(:title, "Titre du potin :") %>
+  <%= text_field_tag(:title) %>
+  <%= label_tag(:content, "Contenu du potin :") %>
+  <%= text_field_tag(:content) %>
+  <%= submit_tag("Valider") %>
+<% end %>

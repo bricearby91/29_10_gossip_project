@@ -1,0 +1,12 @@
+<h1>Bienvenue sur la page de connexion à votre compte !</h1>
+<h4>Remplissez les champs ci-dessous pour vous connecter :</h4>
+
+<%= form_tag(sessions_new_path, method: "post") do %>
+	<%= label_tag(:email, "Adresse e-mail :") %>
+	<%= text_field_tag(:email) %>
+	<br>
+	<%= label_tag(:password, "Mot de passe :") %>
+	<%= text_field_tag(:password) %>
+	<br>
+	<%= submit_tag("Valider") %>
+<% end %>

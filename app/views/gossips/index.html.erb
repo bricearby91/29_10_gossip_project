@@ -1,21 +1,27 @@
-<h1>Bienvenue sur la page d'accueil de The Gossip Project !</h1>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">Bienvenue sur la page d'accueil de The Gossip Project !</h1>
+    <p class="lead">Le site qui recense les derniers potins croustillants</p>
+  </div>
+</div>
 <br>
 <h3>Liste des potins en magasin :</h3>
 <br>
 <p>(Vous pouvez, si vous le souhaitez, y aller de votre contribution et <%= link_to "ajouter un potin à la liste", new_gossip_path %>).</p>
 <%= Gossip.all.each_with_index do |gossip,index| %>
 <br>
+<div class="list-group">
+  <a class="list-group-item list-group-item-action active">
+    <div class="d-flex w-100 justify-content-between">
+      <h5 class="mb-1">Potin numéro <%=index+1%></h5>
+    </div>
+    <p class="mb-1">	Le potin numéro <%=index+1%> s'intitule <%= gossip.title %> et nous a été gentiment rapporté par <%=gossip.user.first_name%> <%=gossip.user.last_name%>.</p>
+  </a>
+  <br>
+   <br>
+   <br>
+  <p>En savoir plus sur <%=link_to "ce potin", gossip_path(gossip.id) %> ou bien sur la <%=link_to "ville de l'auteur de ce potin", city_path(gossip.user.city.id) %>.</p>
+   <br>
+   <br>
 
-
-<div class="card" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title">Potin numéro <%=index+1%></h5>
-<p class = "card-text">		Le potin numéro <%=index+1%> s'intitule <%=link_to "#{gossip.title}", gossip_path(gossip.id) %> et nous a été gentiment rapporté par <%=gossip.user.first_name%><%=gossip.user.first_name%>.
-</p>
-
-  </div>
-</div>
-
-
-<br>
 <% end %>

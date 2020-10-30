@@ -1,0 +1,36 @@
+<h1>Bienvenue sur la page de création d'un nouvel utilisateur !</h1>
+<br>
+<br>
+<div class="alert alert-danger" role="alert">
+<% if @user.errors.any? %>
+  <p>Nous n'avons pas réussi à créer votre compte utilisateur pour la (ou les) raison(s) suivante(s) :</p>
+  <ul>
+    <% @user.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+</div>
+<br>
+
+
+<h4>Remplissez les champs ci-dessous pour ouvrir un nouveau compte.</h4>
+
+<%= form_tag(users_path, method: "post") do %>
+	<%= label_tag(:first_name, "Votre prénom :") %>
+	<%= text_field_tag(:first_name) %>
+	<br>
+	<%= label_tag(:last_name, "Votre nom :") %>
+	<%= text_field_tag(:last_name) %>
+	<br>
+	<%= label_tag(:age, "Votre âge :") %>
+	<%= text_field_tag(:age) %>
+	<br>
+	<%= label_tag(:email, "Votre adresse e-mail :") %>
+	<%= text_field_tag(:email) %>
+	<br>
+	<%= label_tag(:password, "Mot de passe de votre choix :") %>
+	<%= text_field_tag(:password) %>
+	<br>
+	<%= submit_tag("Valider") %>
+<% end %>

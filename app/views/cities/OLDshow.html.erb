@@ -1,0 +1,12 @@
+<h3>Plus d'informations sur l'utilisateur que vous avez sélectionné :</h3>
+
+
+<br>
+<p>Nom de la ville : <%= @city.name %></p>
+<br>
+
+<p>Les utilisateurs suivants sont associés à la même ville :</p>
+<%= User.where(city_id:@city.id).each do |user| %>
+
+<p><%= user.first_name %><%= user.last_name %></p>
+<%=end%>

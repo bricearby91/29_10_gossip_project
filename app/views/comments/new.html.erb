@@ -1,0 +1,10 @@
+<h1>Page de création d'un nouveu commentaire</h1>
+
+<p>Rédigez ici votre commentaire.</p>
+
+<%= form_tag(comments_path, method: "post") do %>
+  <%= label_tag(:content, "Votre commentaire :") %>
+  <%= text_field_tag(:content) %>
+  <%= submit_tag("Valider") %>
+<% end %>
+

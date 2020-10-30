@@ -1,0 +1,15 @@
+<h3>Plus d'informations sur la ville que vous avez sélectionnée :</h3>
+
+
+<br>
+<p>Nom de la ville : <%= @city.name %></p>
+<br>
+
+<p>Les potins écrits par des utilisateurs habitant cette ville sont :</p>
+<%= User.where(city_id:@city.id).each do |user|%>
+<%= Gossip.where(user_id:user.id).each do |gossip|%>
+<p>Le potin <%= gossip.title %>, rapporté par <%="#{user.first_name} #{user.last_name}"%>, dont le contenu est : <%= gossip.content %></p>
+<% end %>
+<% end %>
+
+

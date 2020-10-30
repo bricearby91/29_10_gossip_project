@@ -8,27 +8,22 @@
 <p>Ville de l'auteur : <%= @gossip.user.city.name %></p>
 <br>
 
-<p>Commentaires déjà publiés :</p>
+<p>Commentaires :</p>
 
-<% Comment.where(gossip_id:@gossip.id).each do |comment| %>
+<%= Comment.where(gossip_id:@gossip.id).each do |comment| %>
 
-<p><%= comment.content  %>, le <%= comment.created_at%> par <%=User.find(comment.user_id).first_name%></p>
+<p><%= comment.content  %></p>
 
-<% end %>
+<%= end %>
 
-<br>
+<p>Poster un commentaire en rapport avec ce potin :</p>
 
-<p>Poster un commentaire en rapport avec ce potin</p>
-
-<%= form_tag(salut_path, method: "put") do %>
-  <%= label_tag(:content, "Votre commentaire :") %>
+<%= form_tag(comments_path, method: "post") do %>
+	<%= label_tag(:content, "Votre commentaire :") %>
   <%= text_field_tag(:content) %>
   <%= submit_tag("Valider") %>
-<% end %>
+<%= end %>
 
-
-<br>
-<p>//</p>
 <p>   <%= link_to "En savoir plus", user_path(@gossip.user.id)%> sur l'auteur de ce potin</p>
 
 <p>   <%= link_to "En savoir plus", city_path(@gossip.user.city.id)%> sur la ville de l'auteur de ce potin</p>
@@ -37,4 +32,4 @@
 
 <p>Vous pouvez également <%= link_to "modifier", edit_gossip_path(@gossip.id)%> ce potin.</p>
 
-<p>Ou alors, si le coeur vous en dit, vous pouvez même <%= link_to "le supprimer", gossip_path(@gossip.id), method: "delete" %>.</p>
+<p>Ou alors, si le coeur vous en dit, vous pouvez même <%= link_to "le supprimer", gossip_path(@gossip.id), method: "delete"%>.</p>
